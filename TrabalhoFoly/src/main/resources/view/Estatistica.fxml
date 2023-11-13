@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EstatisticaController">
+   <children>
+      <Button fx:id="btnVoltar" layoutX="1010.0" layoutY="560.0" mnemonicParsing="false" onAction="#btnVoltarOnAction" prefWidth="75.0" text="Voltar" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.rightAnchor="14.799999999999955">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <PieChart fx:id="grafPizza" layoutX="14.0" layoutY="90.0" style="-fx-border-color: #d3d3d3;" title="Dados relativos aos Card Games" />
+      <PieChart fx:id="grafPizza2" layoutX="586.0" layoutY="90.0" style="-fx-border-color: #d3d3d3;" title="Dados relativos a posse das cartas" />
+   </children>
+</AnchorPane>

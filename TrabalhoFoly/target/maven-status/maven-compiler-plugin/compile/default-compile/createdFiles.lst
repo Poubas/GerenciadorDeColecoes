@@ -1,0 +1,9 @@
+model\dao\DaoFactory.class
+model\Colecao.class
+controller\PrincipalController.class
+module-info.class
+model\dao\ColecaoDaoJdbc.class
+model\dao\ConnFactory.class
+model\dao\InterfaceDao.class
+controller\EstatisticaController.class
+start\projetopadrao\App.class
