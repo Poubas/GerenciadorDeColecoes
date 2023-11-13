@@ -25,6 +25,8 @@ public class EstatisticaController implements Initializable {
     private PieChart grafPizza2;
     @FXML
     private Button btnVoltar;
+    @FXML
+    private Button btnVoltar1;
 
     private static List<Colecao> listaColecao = new ArrayList<>();
 
@@ -73,7 +75,7 @@ public class EstatisticaController implements Initializable {
                 possui++;
             }
         }
-        
+
         if (total > 0) {
             return (float) possui / total * 100;
         } else {
