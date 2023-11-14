@@ -117,11 +117,14 @@ public class PrincipalController implements Initializable {
             caminhoImagem = colecaoSelecionada.getLocalImage();
             if (caminhoImagem != null) {
                 try {
-                    InputStream inputStream = getClass().getResourceAsStream("/imagens/" + caminhoImagem);
-                    if (inputStream != null) {
-                        Image image = new Image(inputStream);
-                        imgView.setImage(image);
-                        pnView.setVisible(false);
+                    String diretorioImagens = "src/main/resources/imagens/";
+                    File arquivoImagem = new File(diretorioImagens + caminhoImagem);
+                    if (arquivoImagem.exists()) {
+                        Image image = new Image(arquivoImagem.toURI().toString());
+                        if (image != null) {
+                            imgView.setImage(image);
+                            pnView.setVisible(false);
+                        }
                     }
                 } catch (Exception e) {
                     Alert alertErro = new Alert(Alert.AlertType.INFORMATION);
@@ -164,10 +167,10 @@ public class PrincipalController implements Initializable {
                 try {
                     ColecaoDaoJdbc dao = DaoFactory.novoColecaoDaoJdbc();
 
-                    if (colecaoSelecionada.getLocalImage() != null) {
+                    /*if (colecaoSelecionada.getLocalImage() != null) {
                         Path path = Paths.get("src/main/resources/imagens/" + colecaoSelecionada.getLocalImage());
                         Files.deleteIfExists(path);
-                    }
+                    }*/
 
                     dao.excluir(colecaoSelecionada);
                     limparCampos();
@@ -235,7 +238,8 @@ public class PrincipalController implements Initializable {
         colecao.setTipo(txtTipo.getText());
         if(colecaoSelecionada != null){
             if(colecaoSelecionada.getLocalImage() != null && colecaoSelecionada.getLocalImage() != caminhoImagem){
-                try {
+                Path path = Paths.get("src/main/resources/imagens/" + colecaoSelecionada.getLocalImage());
+                /*try {
                     Path path = Paths.get("src/main/resources/imagens/" + colecaoSelecionada.getLocalImage());
                     Files.deleteIfExists(path);
                 } catch (IOException e) {
@@ -243,7 +247,7 @@ public class PrincipalController implements Initializable {
                     alertErro.setTitle("Aviso");
                     alertErro.setContentText("Ocorreu um erro: " + e.getMessage());
                     alertErro.showAndWait();
-                }
+                }*/
             }
         }
         colecao.setLocalImage(caminhoImagem);

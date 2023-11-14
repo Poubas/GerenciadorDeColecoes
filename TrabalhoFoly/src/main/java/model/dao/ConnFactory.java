@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnFactory {
     public static Connection getConnection() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/colecao2", "root", "");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Colecao", "root", "");
 
         return conn;
     }
