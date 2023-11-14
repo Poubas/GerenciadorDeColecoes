@@ -2,7 +2,6 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -95,6 +94,7 @@ public class PrincipalController implements Initializable {
     @FXML
     private Button btnEstatistica;
 
+    private String diretorioImagens = "src/main/resources/imagens";
     private String caminhoImagem;
     private Colecao colecaoSelecionada;
     private List<Colecao> listaColecao;
@@ -117,15 +117,11 @@ public class PrincipalController implements Initializable {
             caminhoImagem = colecaoSelecionada.getLocalImage();
             if (caminhoImagem != null) {
                 try {
-                    String diretorioImagens = "src/main/resources/imagens/";
-                    File arquivoImagem = new File(diretorioImagens + caminhoImagem);
-                    if (arquivoImagem.exists()) {
-                        Image image = new Image(arquivoImagem.toURI().toString());
-                        if (image != null) {
-                            imgView.setImage(image);
-                            pnView.setVisible(false);
-                        }
-                    }
+                    //if (inputStream != null) {
+                        Image image = new Image(new File(diretorioImagens, caminhoImagem).toURI().toString());
+                        imgView.setImage(image);
+                        pnView.setVisible(false);
+                    //}
                 } catch (Exception e) {
                     Alert alertErro = new Alert(Alert.AlertType.INFORMATION);
                     alertErro.setTitle("Aviso");
@@ -205,7 +201,6 @@ public class PrincipalController implements Initializable {
 
         if (file != null) {
             try {
-                String diretorioImagens = "src/main/resources/imagens";
 
                 File diretorioImagensFile = new File(diretorioImagens);
                 if (!diretorioImagensFile.exists()) {
@@ -236,10 +231,9 @@ public class PrincipalController implements Initializable {
         colecao.setNome(txtNome.getText());
         colecao.setValor(txtValor.getText());
         colecao.setTipo(txtTipo.getText());
-        if(colecaoSelecionada != null){
+        /*if(colecaoSelecionada != null){
             if(colecaoSelecionada.getLocalImage() != null && colecaoSelecionada.getLocalImage() != caminhoImagem){
-                Path path = Paths.get("src/main/resources/imagens/" + colecaoSelecionada.getLocalImage());
-                /*try {
+                try {
                     Path path = Paths.get("src/main/resources/imagens/" + colecaoSelecionada.getLocalImage());
                     Files.deleteIfExists(path);
                 } catch (IOException e) {
@@ -247,9 +241,9 @@ public class PrincipalController implements Initializable {
                     alertErro.setTitle("Aviso");
                     alertErro.setContentText("Ocorreu um erro: " + e.getMessage());
                     alertErro.showAndWait();
-                }*/
+                }
             }
-        }
+        }*/
         colecao.setLocalImage(caminhoImagem);
         if (rdYugi.isSelected()) {
             colecao.setCardGameName("Yu-Gi-Oh!");
